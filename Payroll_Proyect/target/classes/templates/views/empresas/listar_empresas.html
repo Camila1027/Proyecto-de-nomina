@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="plantillas/inicio :: head">
+<meta charset="UTF-8">
+</head>
+
+<body>
+	<header th:replace="plantillas/inicio :: header"></header>
+
+	<div class="container">
+		<h1 th:text="${titulo}"></h1>
+	</div>
+	<div class="container">
+	<p th:unless="${listEmpresas} and ${listEmpresas.size()}" > no hay datos:(</p>
+		<table class="table table bg-dark" style="color: #FBFBFB">
+			<thead class="thead-dark">
+				<tr>
+					<th scope="col">Id</th>
+					<th scope="col">Razon Social</th>
+					<th scope="col">NIT</th>
+					<th scope="col">Correo</th>
+					<th scope="col">Telefono</th>
+					<th scope="col">Celular</th>
+					<th scope="col">Pais</th>
+					<th scope="col">Direccion</th>
+				</tr>
+			</thead>
+				<tr th:each="emp:${listEmpresas}">
+					<th scope="row" th:text=${emp.Id_Empresa}></th>
+					<td th:text="${emp.razon_Social}"></td>
+					<td th:text="${emp.nit}"></td>
+					
+					
+				</tr>
+		
+		</table>
+	</div>
+	<footer th:replace="plantillas/inicio :: footer"></footer>
+</body>
+</html>
